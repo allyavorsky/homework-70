@@ -99,6 +99,14 @@ app.post("/register", async (req, res) => {
     console.log("Нового користувача збережено в БД:", newUser);
     res.status(201).send("Користувача успішно зареєстровано");
   } catch (error) {
+    if (error.name === "ValidationError") {
+      let errors = {};
+
+      Object.keys(error.errors).forEach((key) => {
+        errors[key] = error.errors[key].message;
+      });
+      return res.status(400).json({ messages: errors });
+    }
     console.error("Помилка реєстрації:", error);
     res.status(500).send("Помилка на сервері");
   }
