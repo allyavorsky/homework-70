@@ -87,7 +87,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Тестовий клієнт для Passport.js (React)</h1>
+      <h1>Full Stack React App</h1>
       <div id="status-message">{message}</div>
 
       <h2>Реєстрація</h2>
